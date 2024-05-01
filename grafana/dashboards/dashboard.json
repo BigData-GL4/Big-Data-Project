@@ -1,0 +1,383 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 5,
+      "panels": [],
+      "title": "Vaccination Rates by State ( Hadoop )",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 85
+              },
+              {
+                "color": "green",
+                "value": 93
+              },
+              {
+                "color": "#1b4119",
+                "value": 96
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 1
+      },
+      "id": 2,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select state,mmr from state_mmr where mmr <85 allow filtering; \n\n\n\n"
+        },
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "select state,mmr from state_mmr where mmr <93 and mmr >85 allow filtering; \n\n\n\n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Low States Vaccination Rates",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 2
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 85
+              },
+              {
+                "color": "green",
+                "value": 93
+              },
+              {
+                "color": "#1b4119",
+                "value": 96
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 11
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "basic",
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "select state,mmr from state_mmr where mmr >96 allow filtering; \n\n\n\n"
+        },
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select state,mmr from state_mmr where mmr >93 and mmr <96 allow filtering; \n\n\n\n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "High States Vaccination Rates",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 2
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "fillOpacity": 80,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineWidth": 1
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 85
+              },
+              {
+                "color": "green",
+                "value": 93
+              },
+              {
+                "color": "#1b4119",
+                "value": 96
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 21
+      },
+      "id": 4,
+      "options": {
+        "bucketOffset": 0,
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "A",
+          "target": "select state,mmr from state_mmr where mmr > 96 allow filtering; \n"
+        },
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select state,mmr from state_mmr where mmr > 93 and mmr < 96 allow filtering; \n"
+        },
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "C",
+          "target": "select state,mmr from state_mmr where mmr > 85 and mmr < 93 allow filtering; \n"
+        },
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "zkkgdadVz"
+          },
+          "datasourceId": 7,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "D",
+          "target": "select state,mmr from state_mmr where mmr < 85 allow filtering; \n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Vaccination Thresholds by State",
+      "type": "histogram"
+    }
+  ],
+  "refresh": "3s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "100ms",
+      "1s",
+      "3s",
+      "5s"
+    ]
+  },
+  "timezone": "",
+  "title": "Vaccination Rates",
+  "uid": "oaK8xaOVz",
+  "version": 10,
+  "weekStart": ""
+}
