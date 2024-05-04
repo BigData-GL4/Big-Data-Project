@@ -28,12 +28,255 @@
   "liveNow": false,
   "panels": [
     {
-      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
+      },
+      "id": 10,
+      "title": "Vaccination Rates by State ( Spark )",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVp"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 1
+      },
+      "id": 8,
+      "options": {
+        "displayMode": "gradient",
+        "maxVizHeight": 300,
+        "minVizHeight": 16,
+        "minVizWidth": 8,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "fdkpmqbxn3w1sf"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select city,enroll from city_enroll; \n\n\n\n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Vaccination Distribution By State",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 2
+          }
+        }
+      ],
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVp"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            }
+          },
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 11
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "pieType": "pie",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "fdkpmqbxn3w1sf"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select city,enroll from city_enroll; \n\n\n\n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Vaccination Distribution By State",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 2
+          }
+        }
+      ],
+      "type": "piechart"
+    },
+    {
+      "datasource": {
+        "type": "hadesarchitect-cassandra-datasource",
+        "uid": "zkkgdadVp"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 15,
+        "x": 0,
+        "y": 21
+      },
+      "id": 9,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "10.4.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "hadesarchitect-cassandra-datasource",
+            "uid": "fdkpmqbxn3w1sf"
+          },
+          "datasourceId": 7,
+          "filtering": true,
+          "hide": false,
+          "queryType": "query",
+          "rawQuery": true,
+          "refId": "B",
+          "target": "select city,enroll from city_enroll; \n\n\n\n"
+        }
+      ],
+      "timeFrom": "5m",
+      "title": "Vaccination Distribution By State",
+      "transformations": [
+        {
+          "id": "limit",
+          "options": {
+            "limitField": 2
+          }
+        }
+      ],
+      "type": "gauge"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 31
       },
       "id": 5,
       "panels": [],
@@ -79,7 +322,7 @@
         "h": 10,
         "w": 15,
         "x": 0,
-        "y": 1
+        "y": 32
       },
       "id": 2,
       "options": {
@@ -180,7 +423,7 @@
         "h": 10,
         "w": 15,
         "x": 0,
-        "y": 11
+        "y": 42
       },
       "id": 6,
       "options": {
@@ -291,7 +534,7 @@
         "h": 10,
         "w": 15,
         "x": 0,
-        "y": 21
+        "y": 52
       },
       "id": 4,
       "options": {
@@ -378,6 +621,6 @@
   "timezone": "",
   "title": "Vaccination Rates",
   "uid": "oaK8xaOVz",
-  "version": 10,
+  "version": 1,
   "weekStart": ""
 }

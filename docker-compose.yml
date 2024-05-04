@@ -12,7 +12,7 @@ services:
       - "8088:8088"
       - "7077:7077"
       - "16010:16010"
-    command: ["sh", "-c", "service ssh start && ./start-hadoop.sh && while true; do sleep 1000; done"]
+    command: ["sh", "-c", "service ssh start && ./start-hadoop.sh && ./start-kafka-zookeeper.sh && while true; do sleep 1000; done"]
 
   hadoop-worker1:
     image: liliasfaxi/hadoop-cluster:latest
@@ -42,6 +42,8 @@ services:
       - "9042:9042"
     networks:
       - hadoop
+    volumes:
+      - ./cassandra-setup.cql:/cassandra-setup.cql
 
   grafana:
     image: grafana/grafana
