@@ -2,7 +2,7 @@ import csv
 from random import shuffle
 from time import sleep
 
-def generate_streaming_data(filename, delay=5):
+def generate_streaming_data(filename, delay=2):
 
 
     with open(filename, 'r') as csvfile:
@@ -15,5 +15,5 @@ def generate_streaming_data(filename, delay=5):
         sleep(delay)  # Introduce delay between yielding rows
 
 # Example usage
-for row in generate_streaming_data("shuffled_measles_2421.csv"):
+for row in generate_streaming_data("../Data/shuffled_measles.csv"):
     print(row)
