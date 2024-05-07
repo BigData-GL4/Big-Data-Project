@@ -18,4 +18,4 @@ CREATE TABLE city_enroll (
                              city TEXT,
                              enroll INT,
                              PRIMARY KEY (city)
-)
+);
