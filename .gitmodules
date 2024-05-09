@@ -1,0 +1,6 @@
+[submodule "Vaccination-Rate-Hadoop"]
+	path = Vaccination-Rate-Hadoop
+	url = https://github.com/BigData-GL4/Vaccination-Rate-Hadoop
+[submodule "Vaccination-Rate-Spark"]
+	path = Vaccination-Rate-Spark
+	url = https://github.com/BigData-GL4/Vaccination-Rate-Spark

@@ -1,7 +1,12 @@
 #!/bin/bash
 set -oe pipefail
 
-python ./Data/shuffle.py
+docker compose up -d
+
+cd Vaccination-Rate-Hadoop && bash build.sh
+cd ../Vaccination-Rate-Spark && bash build.sh
+
+cd .. && python ./Data/shuffle.py
 
 docker exec -it hadoop-master bash -c "mkdir -p /root/scripts"
 docker exec -it cassandra bash -c "mkdir -p /root/scripts"
